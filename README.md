@@ -40,4 +40,4 @@
 ### Level 13
 - **Concept**: SSH Key-based authentication and secure file transfer.
 - **`scp`**: Securely copy files between local machine and remote server over SSH.
-- **`chmod`**: Modify file permissions. e.g., `chmod 600 sshkey.private` restricts access to the Owner only (Read/Write), which is mandatory for SSH private keys.
+- **`chmod`**: Modify file permissions. e.g., `chmod 600 sshkey.private` restricts access to the Owner only (Read/Write).
