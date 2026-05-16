@@ -21,3 +21,22 @@
 - use "grep" to show the target word in the file
 - flag: cat data.txt | grep "millionth"
 
+#16-5-2026
+# level 8
+- use "sort" and "uniq -u"
+- "sort": in ascending order, uniq -u: unique row only
+- flag: cat data.txt | sort | uniq -u
+
+# level 9
+- strings: binery
+- flag: strings data.txt | grep "="
+
+# level 12
+- "xxd -r data.txt new": change hexdump to binery
+
+# level 13
+- "scp": copy(safe) files between local and sever
+- "chmod": change files premission, e.g. chmod 600 sshkey.private.
+- 600 means user only
+
+  
