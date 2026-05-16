@@ -1,42 +1,43 @@
-# Overthewire-bandit-learning
+# Overthewire Bandit Learning Notes
 
-# 15-5-2026
-# level 1
-- read a file named '-' using relative paths (./-) or the double-dash (--) separator.
+## 15-5-2026
+### Level 1
+- **Concept**: Read a file named `-` using relative paths (`./-`) or the double-dash (`--`) separator to prevent Linux from misinterpreting the filename as a command argument.
 
-# level 4
-- use "file ./*" to find file type of each file
+### Level 4
+- **Concept**: Use `file ./*` to inspect the file type/magic bytes of every file in the directory.
 
-# level 5 
-- use "find", -type", "-size", "! -excutable" to find the target path of flag 
-- "-size 1033c", c = bytes
-- flag: find . -type f -size 1033c ! -excutable
+### Level 5 
+- **Concept**: Use `find` with `-type`, `-size`, and `! -executable` to filter targets.
+- **Note**: `c` stands for bytes (e.g., `1033c` = 1033 bytes).
+- **Flag Command**: `find . -type f -size 1033c ! -executable`
 
-# level 6 
-- base on level 5, use "/", "user", "group" to find the target path of flag
-- "/" != ".", one is **root** directory, one is **current** directory
-- flag: find / -user bandit7 -group bandit6 -size 33c
+### Level 6 
+- **Concept**: Filter by file owners using `-user` and `-group`.
+- **Note**: `/` (Root directory) != `.` (Current directory).
+- **Flag Command**: `find / -user bandit7 -group bandit6 -size 33c`
 
-# level 7
-- use "grep" to show the target word in the file
-- flag: cat data.txt | grep "millionth"
+### Level 7
+- **Concept**: Use `grep` to extract specific keywords from text streams.
+- **Flag Command**: `cat data.txt | grep "millionth"`
 
-#16-5-2026
-# level 8
-- use "sort" and "uniq -u"
-- "sort": in ascending order, uniq -u: unique row only
-- flag: cat data.txt | sort | uniq -u
+---
 
-# level 9
-- strings: binery
-- flag: strings data.txt | grep "="
+## 16-5-2026
+### Level 8
+- **Concept**: Combine `sort` and `uniq -u` to find unique data.
+- **Note**: `uniq` only checks adjacent lines, so data MUST be sorted first. `-u` filters for rows that appear exactly once.
+- **Flag Command**: `cat data.txt | sort | uniq -u`
 
-# level 12
-- "xxd -r data.txt new": change hexdump to binery
+### Level 9
+- **Concept**: Use `strings` to extract printable text from binary files, ignoring corrupted data.
+- **Flag Command**: `strings data.txt | grep "="`
 
-# level 13
-- "scp": copy(safe) files between local and sever
-- "chmod": change files premission, e.g. chmod 600 sshkey.private.
-- 600 means user only
+### Level 12
+- **Concept**: Use `xxd -r` to reverse a text-based hexdump back into a raw binary file.
+- **Flag Command**: `xxd -r data.txt new_binary`
 
-  
+### Level 13
+- **Concept**: SSH Key-based authentication and secure file transfer.
+- **`scp`**: Securely copy files between local machine and remote server over SSH.
+- **`chmod`**: Modify file permissions. e.g., `chmod 600 sshkey.private` restricts access to the Owner only (Read/Write), which is mandatory for SSH private keys.
